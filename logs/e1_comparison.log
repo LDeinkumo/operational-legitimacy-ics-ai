@@ -1,0 +1,8 @@
+================================================================================
+E1 adversarial authority case: v3.1 (defect) vs v3.2 (correction) - clingo 5.8.2
+================================================================================
+  [PASS] v3.1 (model_v3_1.lp): expected UNSAT / no verdict (fail-blind defect); got UNSAT / no verdict
+  [PASS] v3.2 (model_v3_2.lp): expected reject; got 1 model(s); decision=reject
+================================================================================
+The v3.1 case returns no verdict on a legitimate conflict (fail-blind); v3.2 returns reject.
+================================================================================

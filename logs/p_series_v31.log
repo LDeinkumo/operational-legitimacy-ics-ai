@@ -1,0 +1,61 @@
+==================================================================================
+model_v3_1.lp (frozen) — P-series + integrity cases — clingo 5.8.2
+==================================================================================
+
+[P1] All satisfied (accept control)
+   #models=1  expected=accept    actual=accept    PASS
+   explanation atoms: operationally_legitimate
+
+[P2] MoC unsatisfied
+   #models=1  expected=reject    actual=reject    PASS
+   explanation atoms: failed_moc
+
+[P3] MoC evidence unknown
+   #models=1  expected=withhold  actual=withhold  PASS
+   explanation atoms: unknown_moc_evidence
+
+[P4] MoC applicability unknown
+   #models=1  expected=withhold  actual=withhold  PASS
+   explanation atoms: unknown_moc_applicability
+
+[P5] Authority unsatisfied
+   #models=1  expected=reject    actual=reject    PASS
+   explanation atoms: failed_authority
+
+[P6] Authority evidence unknown
+   #models=1  expected=withhold  actual=withhold  PASS
+   explanation atoms: unknown_authority_evidence
+
+[P7] Verification unsatisfied
+   #models=1  expected=reject    actual=reject    PASS
+   explanation atoms: failed_verification
+
+[P8] Verification evidence unknown
+   #models=1  expected=withhold  actual=withhold  PASS
+   explanation atoms: unknown_verification_evidence
+
+[P9] Release unsatisfied
+   #models=1  expected=reject    actual=reject    PASS
+   explanation atoms: failed_release
+
+[P10] Release evidence unknown
+   #models=1  expected=withhold  actual=withhold  PASS
+   explanation atoms: unknown_release_evidence
+
+[P11] Multiple failures (MoC+Auth+Release)
+   #models=1  expected=reject    actual=reject    PASS
+   explanation atoms: failed_authority, failed_moc, failed_release
+
+[P12] All not-applicable (accept)
+   #models=1  expected=accept    actual=accept    PASS
+   explanation atoms: operationally_legitimate
+
+----------------------------------------------------------------------------------
+Integrity cases (contradictory evidence MUST be UNSAT):
+   [INC1] MoC approved AND not approved              -> UNSAT (correct)
+   [INC2] Release authorised AND not authorised      -> UNSAT (correct)
+   [INC3] Verifier independent AND not independent   -> UNSAT (correct)
+
+==================================================================================
+P-series decisions matching expectation: 12/12
+==================================================================================

@@ -1,0 +1,23 @@
+====================================================================================
+STL T-series — three-valued PA verdicts (transparent monitor, standard STL robustness)
+====================================================================================
+[T1] Phi1  expected=pass    actual=pass    rob=+0.700   PASS  (nominal, within envelope)
+[T2] Phi1  expected=fail    actual=fail    rob=-0.300   PASS  (excursion above +1 at t2)
+[T3] Phi1  expected=pass    actual=pass    rob=+0.050   PASS  (near-boundary, small margin)
+[T4] Phi2  expected=pass    actual=pass    rob=+0.500   PASS  (demand@t1, response within T)
+[T5] Phi2  expected=fail    actual=fail    rob=-0.500   PASS  (demand@t1, response never)
+[T6] Phi2  expected=unknown actual=unknown rob=-0.500   PASS  (demand@t4(last): response window truncated)
+[T7] Phi3  expected=pass    actual=pass    rob=+0.050   PASS  (settles inside band over window)
+[T8] Phi3  expected=fail    actual=fail    rob=-0.300   PASS  (excursion (0.5) inside stability window)
+[T9] Phi3  expected=unknown actual=unknown rob=+0.050   PASS  (stability window extends beyond trace)
+------------------------------------------------------------------------------------
+T-series matching preregistered verdicts: 9/9
+
+robustness ground-truth checks:
+  [ok] T1 rob == +0.700 (min of p+1 and 1-p over trace): got +0.700
+  [ok] T3 rob == +0.050 (1 - 0.95): got +0.050
+  [ok] T5 inner-F rob @t1 == -0.500 (monitor-computed, a never reaches 0.5): got -0.500
+  [ok] T5 top-level rob == -0.500 (monitor-computed over full formula): got -0.500
+
+PA verdicts for cross-layer C-series: {'T1': 'pass', 'T2': 'fail', 'T3': 'pass', 'T4': 'pass', 'T5': 'fail', 'T6': 'unknown', 'T7': 'pass', 'T8': 'fail', 'T9': 'unknown'}
+====================================================================================

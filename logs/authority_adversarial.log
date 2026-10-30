@@ -1,0 +1,23 @@
+==========================================================================================
+Adversarial authority test on FROZEN model_v3_2.lp (Option B) — clingo 5.8.2
+==========================================================================================
+id   #models  decision   legitimate?  expl_failure?  description
+------------------------------------------------------------------------------------------
+AE1  1 model(s) accept     True         False          single valid approver (baseline)
+AE2  1 model(s) reject     False        True           valid approver + irrelevant incompetent actor
+AE3  1 model(s) reject     False        True           incompetent actor only (no valid approver)
+------------------------------------------------------------------------------------------
+Findings:
+ - AE1: one valid approver -> accept, operationally_legitimate, exactly one model.
+ - AE2: a valid approver PLUS an incompetent actor -> REJECT (conservative), exactly one
+        model, NO spurious UNSAT. authority_unsatisfied fires on the incompetent actor and
+        explicit_failure blocks legitimacy, so any incompetent actor in the set forces reject.
+ - AE3: incompetent actor only -> reject.
+
+Documented boundary (Option B): the model treats the approval SET existentially. It cannot
+distinguish a REQUIRED approver from an IRRELEVANT bystander, so an unqualified actor present
+in the set forces a conservative reject even when a valid approver is also present. This is
+safe (fail-closed) but can be over-restrictive. Resolving it needs the required_approver /
+approval_given_by hardening (model_v3_2_hardened.lp), left as future work rather than frozen
+into this paper's evaluated model. The key correctness property holds: no fail-blind UNSAT.
+==========================================================================================

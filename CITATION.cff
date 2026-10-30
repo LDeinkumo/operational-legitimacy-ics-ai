@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this software or its results, please cite the associated manuscript."
+title: "Operational-legitimacy decision shield: reproducibility package"
+abstract: >-
+  Computational artefacts reproducing the results of the manuscript "Physically Safe,
+  Procedurally Unauthorised: Formalising Operational Legitimacy Constraints for
+  Trustworthy AI Decision Support in Industrial Control Systems". The framework composes
+  an operational-legitimacy layer (Answer Set Programming) with a physical-admissibility
+  layer (Signal Temporal Logic) in a decision shield.
+type: software
+authors:
+  - family-names: Liberty
+    given-names: Deinkumo
+    affiliation: "Independent Researcher, United Kingdom"
+    orcid: "https://orcid.org/0009-0004-2314-4784"
+keywords:
+  - trustworthy AI
+  - industrial control systems
+  - runtime verification
+  - shielding
+  - operational legitimacy
+  - signal temporal logic
+  - answer set programming
+  - functional safety
+license: MIT
+references:
+  - type: article
+    title: "Physically Safe, Procedurally Unauthorised: Formalising Operational Legitimacy Constraints for Trustworthy AI Decision Support in Industrial Control Systems"
+    authors:
+      - family-names: Liberty
+        given-names: Deinkumo
+    status: submitted
+    year: 2026

@@ -1,0 +1,10 @@
+# Reproducibility requirements for verify_all.py and the core experiments.
+# Reference environment: Python 3.11.15.
+clingo==5.8.2
+
+# Optional, for the RTAMT cross-validation only (rtamt_tseries.py).
+# RTAMT pins antlr4-python3-runtime==4.7, whose packaging breaks on current
+# setuptools, so install it in an isolated environment with a pinned build backend:
+#   python3 -m venv venv && . venv/bin/activate
+#   pip install 'setuptools==57.5.0' 'wheel==0.37.1'
+#   pip install rtamt==0.4.10   # if unavailable on PyPI, use the project's release archive

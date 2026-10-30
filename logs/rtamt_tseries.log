@@ -1,0 +1,21 @@
+================================================================================================
+RTAMT re-run of STL T-series vs transparent monitor  (robustness at t=0; standard semantics)
+================================================================================================
+id  cls   pre      TM.verd  TM.rob    RTAMT.rob  agree   note
+------------------------------------------------------------------------------------------------
+T1  Phi1  pass     pass     +0.700    +0.700     YES     nominal, within envelope
+T2  Phi1  fail     fail     -0.300    -0.300     YES     excursion above +1 at t2
+T3  Phi1  pass     pass     +0.050    +0.050     YES     near-boundary, small margin
+T4  Phi2  pass     pass     +0.500    +0.500     YES     demand@t1, response within T
+T5  Phi2  fail     fail     -0.500    -0.500     YES     demand@t1, response never
+T6  Phi2  unknown  unknown  -0.500    -0.500     n/a*    demand@t4(last): window truncated
+T7  Phi3  pass     pass     +0.050    +0.050     YES     settles inside band over window
+T8  Phi3  fail     fail     -0.300    -0.300     YES     excursion (0.5) inside window
+T9  Phi3  unknown  unknown  +0.050    +0.050     n/a*    window extends beyond trace
+------------------------------------------------------------------------------------------------
+Decisive (pass/fail) cases where RTAMT robustness == transparent-monitor robustness: 7/7
+* T6, T9 are three-valued UNKNOWN by our online wrapper (needed samples lie beyond the
+  trace end). RTAMT offline treats the trace as complete, so it returns a definite
+  robustness there; the UNKNOWN verdict is the wrapper's, layered on RTAMT's robustness.
+================================================================================================
+rtamt 0.4.10 | python 3.11.15
